@@ -64,6 +64,15 @@
             </goals>
           </execution>
         </executions>
+<!--        <configuration>-->
+<!--          <schemaLanguage>WSDL</schemaLanguage>-->
+<!--          <generateDirectory>${project.basedir}/src/main/java</generateDirectory>-->
+<!--          <generatePackage>com.baeldung.springsoap.client.gen</generatePackage>-->
+<!--          <schemaDirectory>${project.basedir}/src/main/resources</schemaDirectory>-->
+<!--          <schemaIncludes>-->
+<!--            <include>countries.wsdl</include>-->
+<!--          </schemaIncludes>-->
+<!--        </configuration>-->
         <configuration>
           <schemaLanguage>WSDL</schemaLanguage>
           <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
