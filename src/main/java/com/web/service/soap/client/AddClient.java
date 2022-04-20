@@ -10,7 +10,7 @@ public class AddClient extends WebServiceGatewaySupport {
     Add request = new Add();
     request.setIntA(a);
     request.setIntB(b);
-
+    System.out.println("checking");
     AddResponse response = (AddResponse) getWebServiceTemplate().marshalSendAndReceive("http://www.dneonline.com/calculator.asmx/Add",request);
     return response;
   }
