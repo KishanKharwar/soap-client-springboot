@@ -1,12 +1,11 @@
 package com.web.service.soap.client;
 
-import com.web.service.soap.client.AddClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
 @Configuration
-public class AddClientConfig {
+public class BeanConfig {
 
   @Bean
   public Jaxb2Marshaller marshaller() {
@@ -16,9 +15,9 @@ public class AddClientConfig {
   }
 
   @Bean
-  public AddClient addClient(Jaxb2Marshaller marshaller){
-    AddClient client = new AddClient();
-    client.setDefaultUri("http://tempuri.org/");
+  public BlzServiceAdapter soapConnector(Jaxb2Marshaller marshaller) {
+    BlzServiceAdapter client = new BlzServiceAdapter();
+    client.setDefaultUri("http://www.thomas-bayer.com/axis2/services/BLZService");
     client.setMarshaller(marshaller);
     client.setUnmarshaller(marshaller);
     return client;

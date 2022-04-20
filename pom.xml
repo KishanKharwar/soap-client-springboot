@@ -64,25 +64,24 @@
             </goals>
           </execution>
         </executions>
+        <configuration>
+          <generatePackage>com.web.service.soap.client.wsdl</generatePackage>
+          <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
+          <schemaDirectory>${project.basedir}/src/main/resources/</schemaDirectory>
+          <schemaIncludes>
+            <include>*.wsdl</include>
+          </schemaIncludes>
+        </configuration>
 <!--        <configuration>-->
 <!--          <schemaLanguage>WSDL</schemaLanguage>-->
 <!--          <generateDirectory>${project.basedir}/src/main/java</generateDirectory>-->
-<!--          <generatePackage>com.baeldung.springsoap.client.gen</generatePackage>-->
-<!--          <schemaDirectory>${project.basedir}/src/main/resources</schemaDirectory>-->
-<!--          <schemaIncludes>-->
-<!--            <include>countries.wsdl</include>-->
-<!--          </schemaIncludes>-->
+<!--          <generatePackage>com.web.service.soap.client.wsdl</generatePackage>-->
+<!--          <schemas>-->
+<!--            <schema>-->
+<!--              <url>http://www.dneonline.com/calculator.asmx?WSDL</url>-->
+<!--            </schema>-->
+<!--          </schemas>-->
 <!--        </configuration>-->
-        <configuration>
-          <schemaLanguage>WSDL</schemaLanguage>
-          <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
-          <generatePackage>com.web.service.soap.client.wsdl</generatePackage>
-          <schemas>
-            <schema>
-              <url>http://www.dneonline.com/calculator.asmx?WSDL</url>
-            </schema>
-          </schemas>
-        </configuration>
       </plugin>
     </plugins>
   </build>
