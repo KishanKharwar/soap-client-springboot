@@ -16,11 +16,13 @@ public class Controller {
   private BlzServiceAdapter blzServiceAdapter;
 
   @GetMapping("/getBank")
-  public DetailsType sum(@RequestParam String code){
+  public DetailsType sum(@RequestParam String code) {
     ObjectFactory objectFactory = new ObjectFactory();
     GetBankType type = new GetBankType();
     type.setBlz(code);
-    GetBankResponseType response =  blzServiceAdapter.getBank("http://www.thomas-bayer.com/axis2/services/BLZService", objectFactory.createGetBank(type));
+    GetBankResponseType response = blzServiceAdapter
+        .getBank("http://www.thomas-bayer.com/axis2/services/BLZService",
+            objectFactory.createGetBank(type));
     return response.getDetails();
   }
 }

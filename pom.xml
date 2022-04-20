@@ -1,62 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.6.6</version>
-    <relativePath/> <!-- lookup parent from repository -->
-  </parent>
-  <groupId>com.web.service</groupId>
   <artifactId>soap-client</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>soap-client</name>
-  <description>Demo project for Spring Boot</description>
-  <properties>
-    <java.version>1.8</java.version>
-  </properties>
-  <dependencies>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-jpa</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web-services</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>wsdl4j</groupId>
-      <artifactId>wsdl4j</artifactId>
-    </dependency>
-  </dependencies>
-
   <build>
     <plugins>
       <plugin>
-        <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <groupId>org.springframework.boot</groupId>
       </plugin>
       <plugin>
-        <groupId>org.jvnet.jaxb2.maven2</groupId>
         <artifactId>maven-jaxb2-plugin</artifactId>
-        <version>0.14.0</version>
+        <configuration>
+          <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
+          <generatePackage>com.web.service.soap.client.wsdl</generatePackage>
+          <schemaDirectory>${project.basedir}/src/main/resources/</schemaDirectory>
+          <schemaIncludes>
+            <include>*.wsdl</include>
+          </schemaIncludes>
+        </configuration>
         <executions>
           <execution>
             <goals>
@@ -64,26 +26,64 @@
             </goals>
           </execution>
         </executions>
-        <configuration>
-          <generatePackage>com.web.service.soap.client.wsdl</generatePackage>
-          <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
-          <schemaDirectory>${project.basedir}/src/main/resources/</schemaDirectory>
-          <schemaIncludes>
-            <include>*.wsdl</include>
-          </schemaIncludes>
-        </configuration>
-<!--        <configuration>-->
-<!--          <schemaLanguage>WSDL</schemaLanguage>-->
-<!--          <generateDirectory>${project.basedir}/src/main/java</generateDirectory>-->
-<!--          <generatePackage>com.web.service.soap.client.wsdl</generatePackage>-->
-<!--          <schemas>-->
-<!--            <schema>-->
-<!--              <url>http://www.dneonline.com/calculator.asmx?WSDL</url>-->
-<!--            </schema>-->
-<!--          </schemas>-->
-<!--        </configuration>-->
+        <groupId>org.jvnet.jaxb2.maven2</groupId>
+        <version>0.14.0</version>
+        <!--        <configuration>-->
+        <!--          <schemaLanguage>WSDL</schemaLanguage>-->
+        <!--          <generateDirectory>${project.basedir}/src/main/java</generateDirectory>-->
+        <!--          <generatePackage>com.web.service.soap.client.wsdl</generatePackage>-->
+        <!--          <schemas>-->
+        <!--            <schema>-->
+        <!--              <url>http://www.dneonline.com/calculator.asmx?WSDL</url>-->
+        <!--            </schema>-->
+        <!--          </schemas>-->
+        <!--        </configuration>-->
       </plugin>
     </plugins>
   </build>
+  <dependencies>
+    <dependency>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+
+    <dependency>
+      <artifactId>h2</artifactId>
+      <groupId>com.h2database</groupId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-web-services</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>wsdl4j</artifactId>
+      <groupId>wsdl4j</groupId>
+    </dependency>
+  </dependencies>
+  <description>Demo project for Spring Boot</description>
+  <groupId>com.web.service</groupId>
+  <modelVersion>4.0.0</modelVersion>
+  <name>soap-client</name>
+  <parent>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <groupId>org.springframework.boot</groupId>
+    <relativePath/>
+    <version>2.6.6</version> <!-- lookup parent from repository -->
+  </parent>
+  <properties>
+    <java.version>1.8</java.version>
+  </properties>
+
+  <version>0.0.1-SNAPSHOT</version>
 
 </project>

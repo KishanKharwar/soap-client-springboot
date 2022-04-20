@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for getBankType complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="getBankType"&gt;
  *   &lt;complexContent&gt;
@@ -30,8 +30,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "getBankType", propOrder = {
@@ -39,31 +37,25 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class GetBankType {
 
-    @XmlElement(required = true)
-    protected String blz;
+  @XmlElement(required = true)
+  protected String blz;
 
-    /**
-     * Gets the value of the blz property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getBlz() {
-        return blz;
-    }
+  /**
+   * Gets the value of the blz property.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getBlz() {
+    return blz;
+  }
 
-    /**
-     * Sets the value of the blz property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setBlz(String value) {
-        this.blz = value;
-    }
+  /**
+   * Sets the value of the blz property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setBlz(String value) {
+    this.blz = value;
+  }
 
 }
