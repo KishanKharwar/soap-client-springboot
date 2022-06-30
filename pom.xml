@@ -3,44 +3,21 @@
   xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <artifactId>soap-client</artifactId>
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-        <groupId>org.springframework.boot</groupId>
-      </plugin>
-      <plugin>
-        <artifactId>maven-jaxb2-plugin</artifactId>
-        <configuration>
-          <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
-          <generatePackage>com.web.service.soap.client.wsdl</generatePackage>
-          <schemaDirectory>${project.basedir}/src/main/resources/</schemaDirectory>
-          <schemaIncludes>
-            <include>*.wsdl</include>
-          </schemaIncludes>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>generate</goal>
-            </goals>
-          </execution>
-        </executions>
-        <groupId>org.jvnet.jaxb2.maven2</groupId>
-        <version>0.14.0</version>
-        <!--        <configuration>-->
-        <!--          <schemaLanguage>WSDL</schemaLanguage>-->
-        <!--          <generateDirectory>${project.basedir}/src/main/java</generateDirectory>-->
-        <!--          <generatePackage>com.web.service.soap.client.wsdl</generatePackage>-->
-        <!--          <schemas>-->
-        <!--            <schema>-->
-        <!--              <url>http://www.dneonline.com/calculator.asmx?WSDL</url>-->
-        <!--            </schema>-->
-        <!--          </schemas>-->
-        <!--        </configuration>-->
-      </plugin>
-    </plugins>
-  </build>
+  <description>Demo project for Spring Boot</description>
+  <groupId>com.web.service</groupId>
+  <modelVersion>4.0.0</modelVersion>
+  <name>soap-client</name>
+  <parent>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <groupId>org.springframework.boot</groupId>
+    <relativePath/>
+    <version>2.6.6</version> <!-- lookup parent from repository -->
+  </parent>
+  <properties>
+    <java.version>1.8</java.version>
+  </properties>
+
+  <version>0.0.1-SNAPSHOT</version>
   <dependencies>
     <dependency>
       <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -70,20 +47,105 @@
       <groupId>wsdl4j</groupId>
     </dependency>
   </dependencies>
-  <description>Demo project for Spring Boot</description>
-  <groupId>com.web.service</groupId>
-  <modelVersion>4.0.0</modelVersion>
-  <name>soap-client</name>
-  <parent>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <groupId>org.springframework.boot</groupId>
-    <relativePath/>
-    <version>2.6.6</version> <!-- lookup parent from repository -->
-  </parent>
-  <properties>
-    <java.version>1.8</java.version>
-  </properties>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <groupId>org.springframework.boot</groupId>
+        </plugin>
+        <plugin>
+          <artifactId>maven-jaxb2-plugin</artifactId>
+          <configuration>
+            <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
+            <generatePackage>com.web.service.soap.client.wsdl</generatePackage>
+            <schemaDirectory>${project.basedir}/src/main/resources/</schemaDirectory>
+            <schemaIncludes>
+              <include>*.wsdl</include>
+            </schemaIncludes>
+          </configuration>
+          <executions>
+            <execution>
+              <goals>
+                <goal>generate</goal>
+              </goals>
+            </execution>
+          </executions>
+          <groupId>org.jvnet.jaxb2.maven2</groupId>
+          <version>0.14.0</version>
+          <!--        <configuration>-->
+          <!--          <schemaLanguage>WSDL</schemaLanguage>-->
+          <!--          <generateDirectory>${project.basedir}/src/main/java</generateDirectory>-->
+          <!--          <generatePackage>com.web.service.soap.client.wsdl</generatePackage>-->
+          <!--          <schemas>-->
+          <!--            <schema>-->
+          <!--              <url>http://www.dneonline.com/calculator.asmx?WSDL</url>-->
+          <!--            </schema>-->
+          <!--          </schemas>-->
+          <!--        </configuration>-->
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.0.2</version>
+          <executions>
+            <execution>
+              <phase>none</phase>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>com.akathist.maven.plugins.launch4j</groupId>
+          <artifactId>launch4j-maven-plugin</artifactId>
+          <executions>
+            <execution>
+              <id>l4j-clui</id>
+              <phase>package</phase>
+              <goals>
+                <goal>launch4j</goal>
+              </goals>
+              <configuration>
+                <headerType>gui</headerType>
+                <jar>target/soap-client-0.0.1-SNAPSHOT.jar</jar>
+                <outfile>target/soap-client.exe</outfile>
+                <downloadUrl>http://java.com/download</downloadUrl>
+                <classPath>
+                  <mainClass>com.web.service.soap.client.SoapClientApplication</mainClass>
+                  <preCp>anything</preCp>
+                </classPath>
+                <jre>
+                  <bundledJre64Bit>false</bundledJre64Bit>
+                  <bundledJreAsFallback>false</bundledJreAsFallback>
+                  <minVersion>1.8.0</minVersion>
+                  <jdkPreference>preferJre</jdkPreference>
+                  <runtimeBits>64</runtimeBits>
+                </jre>
+                <versionInfo>
+                  <fileVersion>1.0.0.0</fileVersion>
+                  <txtFileVersion>${project.version}</txtFileVersion>
+                  <fileDescription>${project.name}</fileDescription>
+                  <copyright>2017 spiraluplabs.com</copyright>
+                  <productVersion>1.0.0.0</productVersion>
+                  <txtProductVersion>1.0.0.0</txtProductVersion>
+                  <productName>${project.name}</productName>
+                  <companyName>SpiralUp</companyName>
+                  <internalName>SpiralShareAutoAllocation</internalName>
+                  <originalFilename>SpiralShareAutoAllocation.exe</originalFilename>
+                </versionInfo>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
 
-  <version>0.0.1-SNAPSHOT</version>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>com.akathist.maven.plugins.launch4j</groupId>
+        <artifactId>launch4j-maven-plugin</artifactId>
+      </plugin>
+
+    </plugins>
+  </build>
+
 
 </project>

@@ -1,5 +1,6 @@
 com\web\service\soap\client\BeanConfig.class
 com\web\service\soap\client\Controller.class
+com\web\service\soap\client\BlzServiceAdapter.class
 com\web\service\soap\client\wsdl\DetailsType.class
 com\web\service\soap\client\wsdl\GetBankResponseType.class
 com\web\service\soap\client\wsdl\ObjectFactory.class

@@ -5,18 +5,19 @@ import com.web.service.soap.client.wsdl.GetBankResponseType;
 import com.web.service.soap.client.wsdl.GetBankType;
 import com.web.service.soap.client.wsdl.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Component
 public class Controller {
 
   @Autowired
   private BlzServiceAdapter blzServiceAdapter;
 
-  @GetMapping("/getBank")
-  public DetailsType sum(@RequestParam String code) {
+  //@GetMapping("/getBank")
+  public DetailsType sum(String code) {
     ObjectFactory objectFactory = new ObjectFactory();
     GetBankType type = new GetBankType();
     type.setBlz(code);
